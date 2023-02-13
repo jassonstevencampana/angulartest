@@ -1,0 +1,16 @@
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()" class="ui form">
+    <div class="field required" [ngClass]="this.userForm.get('name')?.invalid && isSubmitted ? 'error' : '' ">
+        <label>Name</label>
+        <input formControlName="name" type="text" placeholder="Enter Name">
+        <div class="ui error message" *ngIf="this.userForm.get('name')?.invalid">
+            <p>Il campo nome è obbligatorio.</p>
+        </div>
+    </div>
+    <div class="field">
+        <label>Age</label>
+        <input formControlName="age" type="number" placeholder="Enter age">
+    </div>
+    <button type="submit" class="ui button" (click)="isSubmitted=true">Submit</button>
+    <button type="button" class="ui button" (click)="userForm.reset();isSubmitted=true">Clear</button>
+
+</form>
